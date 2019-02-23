@@ -1,0 +1,38 @@
+{
+    "name": "nichozuo/laravel-common",
+    "description": "Package description here.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "nichozuo",
+            "email": "nichozuo@qq.com"
+        }
+    ],
+    "require": {
+        "doctrine/dbal": "^2.9",
+        "mews/purifier": "^2.1",
+        "caouecs/laravel-lang": "^3.0",
+        "vinkla/hashids": "^5.1",
+        "tymon/jwt-auth": "1.0.0-rc.3",
+        "spatie/eloquent-sortable": "^3.4",
+        "tucker-eric/eloquentfilter": "^1.4",
+        "predis/predis": "^1.1",
+        "kalnoy/nestedset": "^4.3",
+        "overtrue/easy-sms": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nichozuo\\LaravelCommon\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nichozuo\\LaravelCommon\\LaravelCommonServiceProvider"
+            ]
+        }
+    },
+    "require-dev": {
+        "laravel/framework": "^5.7"
+    }
+}
