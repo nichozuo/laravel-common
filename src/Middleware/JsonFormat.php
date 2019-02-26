@@ -45,7 +45,8 @@ class JsonFormat
                 }
 
                 // 如果有data,则解开data
-                $data['data'] = ($oriData->data ?? []) ? $oriData->data : $oriData;
+                //$data['data'] = ($oriData->data ?? []) ? $oriData->data : $oriData;
+                $data['data'] = (property_exists($oriData, 'data')) ? $oriData->data : $oriData;
 
                 // 处理分页
                 if ($oriData->current_page ?? '') {

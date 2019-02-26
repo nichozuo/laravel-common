@@ -10,6 +10,7 @@ namespace Nichozuo\LaravelCommon\Requests;
 
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Validator;
 use Nichozuo\LaravelCommon\Exceptions\ValidationException;
 use Vinkla\Hashids\Facades\Hashids;
 
@@ -30,7 +31,7 @@ class BaseFormRequest extends FormRequest
         }
     }
 
-    public function getCleanData()
+    public function getCleanData(array $hashIds = null)
     {
         // 通过验证的请求参数数组
         $params = $this->validated();
@@ -45,15 +46,31 @@ class BaseFormRequest extends FormRequest
                 }
             }
 
-            // 如果传入的是array数组，就把他变成string
-//            if (stripos($value, 'array') !== false) {
-//                if (array_key_exists($key, $params)) {
-//                    $params[$key] = implode(',', $params[$key]);
-//                }
-//            }
+            // 处理HashIds
+            if($hashIds != null){
+                if(in_array($key, $hashIds)){
+                    $params[$key] = Hashids::decode($params[$key])[0];
+                }
+            }
         }
 
         return $params;
+    }
+
+    protected function getPerPage()
+    {
+        $params = request()->only('per_page');
+        if ($params == null) {
+            return 10;
+        }
+
+        $validator = Validator::make($params, array(
+            'per_page' => 'nullable|integer|in:10,20,30,40,50,60,70,80,90,100'
+        ));
+        if ($validator->fails()) {
+            return 10;
+        }
+        return (int)$params['per_page'];
     }
 
     protected function getActionName()
@@ -61,4 +78,6 @@ class BaseFormRequest extends FormRequest
         $action_name = $this->route()->getActionName();
         return explode('@', $action_name)[1];
     }
+
+
 }

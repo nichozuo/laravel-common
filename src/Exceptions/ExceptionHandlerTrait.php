@@ -95,17 +95,9 @@ trait ExceptionHandlerTrait
                     'params' => $request->all()
                 ]);
                 break;
-            case InvalidArgumentException::class:
-            case BadMethodCallException::class:
-                $this->code = 1;
-                $this->msg = '系统错误';
-                $this->data = array(
-                    'message' => $exception->getMessage()
-                );
-                break;
             default:
                 $this->code = 9;
-                $this->msg = '未知错误';
+                $this->msg = '系统错误';
                 $this->data = array(
                     'message' => $exception->getMessage(),
                     'exception' => $class
