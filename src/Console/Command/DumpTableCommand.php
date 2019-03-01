@@ -91,6 +91,12 @@ class DumpTableCommand extends Command
             $strRequest .= "'{$item[0]}' => '$item[1]|{$item[2]}',\r\n";
         }
 
+        $strRequest .= "\r\n\r\n";
+
+        foreach ($columns_type_list as $item) {
+            $strRequest .= "'{$item[0]}' => '',\r\n";
+        }
+
         return $strRequest;
     }
 
