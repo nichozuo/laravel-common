@@ -23,4 +23,23 @@ class RouteHelper
             }
         }
     }
+
+    public static function newRoute($router, $controller, array $actions, $prefix = null)
+    {
+        $controller = (str_start($controller, '\\')) ? $controller : '\\' . $controller;
+
+        foreach ($actions as $action) {
+
+            $temp = explode($action, ':');
+
+            $method = (count($temp) == 2) ? [$temp[0]] : ['get'];
+            $actionName = (count($temp) == 2) ? $temp[1] : $temp[0];
+
+            $URI = ($prefix == null) ? snake_case($actionName) : $prefix . '/' . snake_case($actionName);
+
+            $routerName = ($prefix == null) ? snake_case($actionName) : implode(explode('/', $prefix), '.') . '.' . snake_case($actionName);
+
+            $router->match($method, $URI, $controller . '@' . $actionName)->name($routerName);
+        }
+    }
 }
