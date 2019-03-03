@@ -26,13 +26,13 @@ class RouteHelper
 
     public static function newRoute($router, $controller, array $actions, $prefix = null)
     {
-        $controller = (str_start($controller, '\\')) ? $controller : '\\' . $controller;
+        $controller = str_start($controller, '\\');
 
         foreach ($actions as $action) {
 
-            $temp = explode($action, ':');
+            $temp = explode(':', $action);
 
-            $method = (count($temp) == 2) ? [$temp[0]] : ['get'];
+            $method = (count($temp) == 2) ? [$temp[0]] : ['post'];
             $actionName = (count($temp) == 2) ? $temp[1] : $temp[0];
 
             $URI = ($prefix == null) ? snake_case($actionName) : $prefix . '/' . snake_case($actionName);
