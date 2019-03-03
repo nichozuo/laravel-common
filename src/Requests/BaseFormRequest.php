@@ -75,9 +75,10 @@ class BaseFormRequest extends FormRequest
 
     protected function getActionName()
     {
+        if ($this->route() == null) {
+            return [];
+        }
         $action_name = $this->route()->getActionName();
         return explode('@', $action_name)[1];
     }
-
-
 }
