@@ -102,7 +102,7 @@ class DumpTableCommand extends Command
 
     private function getRequired($notNull, $default)
     {
-        return ($notNull === true && $default === false) ? 'required' : 'nullable';
+        return ($notNull === true && $default === null) ? 'required' : 'nullable';
     }
 
     private function getValidateType($columnType)
