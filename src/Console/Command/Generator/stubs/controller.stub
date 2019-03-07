@@ -13,7 +13,7 @@ class MyModelNameController extends Controller
     {
         $params = $request->getCleanData();
         $list = MyModelNameModel::select('id')
-            ->filter($params, MyModelNameFilter:class)
+            ->filter($params, MyModelNameFilter::class)
             ->paginate($this->getPerPage($params));
         return $list;
     }
