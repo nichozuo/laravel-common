@@ -6,7 +6,7 @@
  * Time: 3:11 PM
  */
 
-namespace Nichozuo\LaravelCommon\Console\Command;
+namespace Nichozuo\LaravelCommon\Console\Command\Install;
 
 
 use EloquentFilter\ServiceProvider;

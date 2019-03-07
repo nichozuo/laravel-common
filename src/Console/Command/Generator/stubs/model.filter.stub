@@ -1,0 +1,11 @@
+<?php
+
+namespace DummyNamespace;
+
+
+use EloquentFilter\ModelFilter;
+
+class DummyClass extends ModelFilter
+{
+    public $relations = [];
+}

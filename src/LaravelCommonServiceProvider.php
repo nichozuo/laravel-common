@@ -9,12 +9,18 @@
 namespace Nichozuo\LaravelCommon;
 
 use Nichozuo\LaravelCommon\Console\Command\DumpTableCommand;
-use Nichozuo\LaravelCommon\Console\Command\InstallCreateCommand;
-use Nichozuo\LaravelCommon\Console\Command\InstallEloquentFilterCommand;
-use Nichozuo\LaravelCommon\Console\Command\InstallHashidsCommand;
-use Nichozuo\LaravelCommon\Console\Command\InstallJWTCommand;
-use Nichozuo\LaravelCommon\Console\Command\InstallLangCommand;
-use Nichozuo\LaravelCommon\Console\Command\InstallPurifierCommand;
+use Nichozuo\LaravelCommon\Console\Command\Generator\MakeControllerCommand;
+use Nichozuo\LaravelCommon\Console\Command\Generator\MakeFilesCommand;
+use Nichozuo\LaravelCommon\Console\Command\Generator\MakeModelCommand;
+use Nichozuo\LaravelCommon\Console\Command\Generator\MakeModelExtendCommand;
+use Nichozuo\LaravelCommon\Console\Command\Generator\MakeModelFilterCommand;
+use Nichozuo\LaravelCommon\Console\Command\Generator\MakeRequestCommand;
+use Nichozuo\LaravelCommon\Console\Command\Install\InstallCreateCommand;
+use Nichozuo\LaravelCommon\Console\Command\Install\InstallEloquentFilterCommand;
+use Nichozuo\LaravelCommon\Console\Command\Install\InstallHashidsCommand;
+use Nichozuo\LaravelCommon\Console\Command\Install\InstallJWTCommand;
+use Nichozuo\LaravelCommon\Console\Command\Install\InstallLangCommand;
+use Nichozuo\LaravelCommon\Console\Command\Install\InstallPurifierCommand;
 use Nichozuo\LaravelCommon\ServiceProvider\BaseServiceProvider;
 
 class LaravelCommonServiceProvider extends BaseServiceProvider
@@ -59,6 +65,13 @@ class LaravelCommonServiceProvider extends BaseServiceProvider
             InstallJWTCommand::class,
             InstallEloquentFilterCommand::class,
             InstallCreateCommand::class,
+
+            MakeControllerCommand::class,
+            MakeFilesCommand::class,
+            MakeModelCommand::class,
+            MakeModelExtendCommand::class,
+            MakeModelFilterCommand::class,
+            MakeRequestCommand::class
         ]);
     }
 

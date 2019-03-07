@@ -1,0 +1,48 @@
+<?php
+
+namespace DummyNamespace;
+
+
+use App\Models\MyModelName\MyModelNameModel;
+use App\Http\Controllers\Controller;
+
+class MyModelNameController extends Controller
+{
+    public function list(MyModelNameRequest $request)
+    {
+        $params = $request->getCleanData();
+        $list = MyModelNameModel::select('id')
+            ->filter($params)
+            ->paginate($this->getPerPage($params));
+        return $list;
+    }
+
+    public function store(MyModelNameRequest $request)
+    {
+        $params = $request->getCleanData();
+        MyModelNameModel::create($params);
+        return [];
+    }
+
+    public function show(MyModelNameRequest $request)
+    {
+        $params = $request->getCleanData();
+        $data = MyModelNameModel::findOrFail($params['id']);
+        return $data;
+    }
+
+    public function update(MyModelNameRequest $request)
+    {
+        $params = $request->getCleanData();
+        $data = MyModelNameModel::findOrFail($params['id']);
+        $data->update($params);
+        return [];
+    }
+
+    public function destroy(MyModelNameRequest $request)
+    {
+        $params = $request->getCleanData();
+        MyModelNameModel::destroy($params['id']);
+        return [];
+    }
+}

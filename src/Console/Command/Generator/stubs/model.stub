@@ -1,0 +1,13 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Database\Eloquent\Model;
+
+class DummyClass extends Model
+{
+    protected $table = 'MyTable';
+    protected $fillable = [MyFillable];
+
+    MyRelations
+}

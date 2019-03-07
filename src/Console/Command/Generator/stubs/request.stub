@@ -1,0 +1,43 @@
+<?php
+
+namespace DummyNamespace;
+
+
+use Nichozuo\LaravelCommon\Requests\BaseFormRequest;
+
+class MyModelNameRequest extends BaseFormRequest
+{
+    public function rules()
+    {
+        switch ($this->getActionName()) {
+            case 'list':
+                return [
+                    'name' => 'nullable|string',
+                    'per_page' => 'nullable|in:10,20,40,80',
+                ];
+                break;
+            case 'store':
+                return [
+                    MyFields
+                ];
+                break;
+            case 'show':
+            case 'destroy':
+                return [
+                    'id' => 'required|integer',
+                ];
+                break;
+            case 'update':
+                return [
+                    'id' => 'required|integer',
+                    MyFields
+                ];
+                break;
+            default:
+                return [
+                    'nothing' => 'nullable',
+                ];
+                break;
+        }
+    }
+}

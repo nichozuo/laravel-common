@@ -6,7 +6,7 @@
  * Time: 8:56 PM
  */
 
-namespace Nichozuo\LaravelCommon\Console\Command;
+namespace Nichozuo\LaravelCommon\Console\Command\Install;
 
 
 use Illuminate\Console\Command;
