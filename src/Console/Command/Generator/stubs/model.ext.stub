@@ -3,7 +3,9 @@
 namespace DummyNamespace;
 
 
+use EloquentFilter\Filterable;
+
 class MyClassModel extends MyClass
 {
-
+    use Filterable;
 }

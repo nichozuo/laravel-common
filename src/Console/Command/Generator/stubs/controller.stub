@@ -4,6 +4,7 @@ namespace DummyNamespace;
 
 
 use App\Models\MyModelName\MyModelNameModel;
+use App\Models\MyModelName\MyModelNameFilter;
 use App\Http\Controllers\Controller;
 
 class MyModelNameController extends Controller
@@ -12,7 +13,7 @@ class MyModelNameController extends Controller
     {
         $params = $request->getCleanData();
         $list = MyModelNameModel::select('id')
-            ->filter($params)
+            ->filter($params, MyModelNameFilter:class)
             ->paginate($this->getPerPage($params));
         return $list;
     }

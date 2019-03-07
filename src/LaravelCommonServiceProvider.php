@@ -65,7 +65,6 @@ class LaravelCommonServiceProvider extends BaseServiceProvider
             InstallJWTCommand::class,
             InstallEloquentFilterCommand::class,
             InstallCreateCommand::class,
-
             MakeControllerCommand::class,
             MakeFilesCommand::class,
             MakeModelCommand::class,
