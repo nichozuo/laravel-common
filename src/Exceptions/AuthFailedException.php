@@ -9,8 +9,12 @@
 namespace Nichozuo\LaravelCommon\Exceptions;
 
 
+use \App\Exceptions\AuthFailedExceptionTrait;
+
 class AuthFailedException extends BaseException
 {
+    use AuthFailedExceptionTrait;
+
     public static function loginFailed(array $params)
     {
         return new static('登录失败，用户名密码错误', 20000, [
