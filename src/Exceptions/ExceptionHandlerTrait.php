@@ -44,6 +44,7 @@ trait ExceptionHandlerTrait
             case ResourceException::class:
             case SendMessageFailedException::class:
             case ValidationException::class:
+            case ProjectException::class:
                 $this->data = $exception->getData();
                 break;
             case \Illuminate\Validation\ValidationException::class:
