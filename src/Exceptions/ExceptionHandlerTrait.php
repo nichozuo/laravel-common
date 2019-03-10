@@ -63,12 +63,14 @@ trait ExceptionHandlerTrait
                 break;
             case ModelNotFoundException::class:
                 $this->msg = '没有找到数据';
+                $this->code = 1;
                 $this->data = array(
                     'message' => $exception->getMessage()
                 );
                 break;
             case QueryException::class:
                 $this->msg = '操作数据错误，请重试！';
+                $this->code = 1;
                 $this->data = array(
                     'message' => $exception->getMessage(),
                     'sql' => $exception->getSql(),
@@ -77,12 +79,14 @@ trait ExceptionHandlerTrait
                 break;
             case NotFoundHttpException::class:
                 $this->msg = '没有找到路由信息';
+                $this->code = 1;
                 $this->data = array(
                     'message' => $exception->getMessage()
                 );
                 break;
             case MethodNotAllowedHttpException::class:
                 $this->msg = '请求方式不正确';
+                $this->code = 1;
                 $this->data = array(
                     'message' => $exception->getMessage()
                 );
